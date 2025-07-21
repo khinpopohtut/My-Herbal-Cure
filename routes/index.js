@@ -17,4 +17,8 @@ router.get("/hdl", function (req, res, next) {
 router.get("/dds", function (req, res, next) {
   res.render("dds", {__: res.__});
 });
+
+router.get("/aboutus", function (req, res){
+  res.render("aboutus", {__: res.__});
+})
 module.exports = router;
