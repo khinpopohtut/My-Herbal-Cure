@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Herbal Cure Admin</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link href="/stylesheets/quill.snow.css" rel="stylesheet" />
+    <script src="/javascripts/quill.js"></script>
   </head>
   <body>
     <div id="root">
@@ -43,99 +45,103 @@
             <div
               class="card shadow-md mx-auto rounded-lg max-w-5xl bg-base-300"
             >
-            <form action="/admin/hi/create" method="post" enctype="multipart/form-data">
-              <div class="grid grid-cols-1 lg:grid-cols-4 gap-3 p-3">
-                <fieldset class="fieldset">
-                  <legend class="fieldset-legend">Ingredient Name MM</legend>
-                  <input
-                    type="text"
-                    name="nameMM"
-                    class="input"
-                    placeholder="Ingredient Name MM"
-                  />
-                </fieldset>
-                <fieldset class="fieldset">
-                  <legend class="fieldset-legend">Ingredient Name EN</legend>
-                  <input
-                    type="text"
-                    name="nameEN"
-                    class="input"
-                    placeholder="Ingredient Name EN"
-                  />
-                </fieldset>
-                <fieldset class="fieldset">
-                  <legend class="fieldset-legend">Category</legend>
-                  <select class="select" name="category">
-                    <option disabled selected>Pick a Category</option>
-                    <option>Chrome</option>
-                    <option value="Leafy Greens">Leafy Greens</option>
-                    <option value="Root Vegetables">Root Vegetables</option>
-                    <option value="Cruciferous Vegetables">Cruciferous Vegetables</option>
-                    <option value="Fruit Vegetables">Fruit Vegetables</option>
-                    <option value="Stem Vegetables">Stem Vegetables</option>
-                    <option value="Bulb Vegetables">Bulb Vegetables</option>
-                    <option value="Tuber Vegetablea">Tuber Vegetablea</option>
-                    <option value="Flower Vegetablea">Flower Vegetablea</option>
-                  </select>
-                </fieldset>
-                <fieldset class="fieldset">
-                  <legend class="fieldset-legend">Image</legend>
-                  <input type="file" name="image" class="file-input" />
-                </fieldset>
-                <fieldset class="fieldset lg:col-span-2">
-                  <legend class="fieldset-legend">Benefit MM</legend>
-                  <textarea
-                    class="textarea h-24 w-full"
-                    name="benefitMM"
-                    placeholder="Benefit MM"
-                  ></textarea>
-                </fieldset>
-                <fieldset class="fieldset lg:col-span-2">
-                  <legend class="fieldset-legend">Benefit EN</legend>
-                  <textarea
-                    class="textarea h-24 w-full"
-                    name="benefitEN"
-                    placeholder="Benefit EN"
-                  ></textarea>
-                </fieldset>
-                <fieldset class="fieldset lg:col-span-2">
-                  <legend class="fieldset-legend">SideEffect MM</legend>
-                  <textarea
-                    class="textarea h-24 w-full"
-                    name="sideEffectMM"
-                    placeholder="SideEffect MM"
-                  ></textarea>
-                </fieldset>
-                <fieldset class="fieldset lg:col-span-2">
-                  <legend class="fieldset-legend">SideEffect EN</legend>
-                  <textarea
-                    class="textarea h-24 w-full"
-                    name="sideEffectEN"
-                    placeholder="SideEffect EN"
-                  ></textarea>
-                </fieldset>
-                <fieldset class="fieldset lg:col-span-2">
-                  <legend class="fieldset-legend">Description MM</legend>
-                  <textarea
-                    class="textarea h-24 w-full"
-                    name="descriptionMM"
-                    placeholder="Description MM"
-                  ></textarea>
-                </fieldset>
-                <fieldset class="fieldset lg:col-span-2">
-                  <legend class="fieldset-legend">Description EN</legend>
-                  <textarea
-                    class="textarea h-24 w-full"
-                    name="descriptionEN"
-                    placeholder="Description EN"
-                  ></textarea>
-                </fieldset>
-                <div class="flex flex-col col-span-full">
-                  <button type="submit" class="btn btn-primary">Add</button>
+              <form
+                action="/admin/hi/create"
+                method="post"
+                enctype="multipart/form-data"
+              >
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-3 p-3">
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Ingredient Name MM</legend>
+                    <input
+                      type="text"
+                      name="nameMM"
+                      class="input"
+                      placeholder="Ingredient Name MM"
+                    />
+                  </fieldset>
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Ingredient Name EN</legend>
+                    <input
+                      type="text"
+                      name="nameEN"
+                      class="input"
+                      placeholder="Ingredient Name EN"
+                    />
+                  </fieldset>
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Category</legend>
+                    <select class="select" name="category">
+                      <option disabled selected>Pick a Category</option>
+                      <option value="Leafy Greens">Leafy Greens</option>
+                      <option value="Root Vegetables">Root Vegetables</option>
+                      <option value="Cruciferous Vegetables">
+                        Cruciferous Vegetables
+                      </option>
+                      <option value="Fruit Vegetables">Fruit Vegetables</option>
+                      <option value="Stem Vegetables">Stem Vegetables</option>
+                      <option value="Bulb Vegetables">Bulb Vegetables</option>
+                      <option value="Tuber Vegetables">Tuber Vegetables</option>
+                      <option value="Flower Vegetables">
+                        Flower Vegetables
+                      </option>
+                    </select>
+                  </fieldset>
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Image</legend>
+                    <input type="file" name="image" class="file-input" />
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Benefit MM</legend>
+                    <div id="benefitMMEditor" class="bg-base-100"></div>
+                    <input type="hidden" name="benefitMM" id="benefitMM" />
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Benefit EN</legend>
+                    <div id="benefitENEditor" class="bg-base-100"></div>
+                    <input type="hidden" name="benefitEN" id="benefitEN" />
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">SideEffect MM</legend>
+                    <div id="sideEffectMMEditor" class="bg-base-100"></div>
+                    <input
+                      type="hidden"
+                      name="sideEffectMM"
+                      id="sideEffectMM"
+                    />
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">SideEffect EN</legend>
+                    <div id="sideEffectENEditor" class="bg-base-100"></div>
+                    <input
+                      type="hidden"
+                      name="sideEffectEN"
+                      id="sideEffectEN"
+                    />
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Description MM</legend>
+                    <textarea
+                      class="textarea h-24 w-full"
+                      name="descriptionMM"
+                      placeholder="Description MM"
+                    ></textarea>
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Description EN</legend>
+                    <textarea
+                      class="textarea h-24 w-full"
+                      name="descriptionEN"
+                      placeholder="Description EN"
+                    ></textarea>
+                  </fieldset>
+                  <div class="flex flex-col col-span-full">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                  </div>
                 </div>
-              </div>
               </form>
             </div>
+
             <div class="h-16"></div>
           </main>
         </div>
@@ -143,4 +149,29 @@
       </div>
     </div>
   </body>
+  <script>
+    const quill1 = new Quill("#benefitMMEditor", {
+      theme: "snow",
+    });
+    const quill2 = new Quill("#benefitENEditor", {
+      theme: "snow",
+    });
+    const quill3 = new Quill("#sideEffectMMEditor", {
+      theme: "snow",
+    });
+    const quill4 = new Quill("#sideEffectENEditor", {
+      theme: "snow",
+    });
+    const form = document.querySelector("form");
+    const benefitMM = document.getElementById("benefitMM");
+    const benefitEN = document.getElementById("benefitEN");
+    const sideEffectMM = document.getElementById("sideEffectMM");
+    const sideEffectEN = document.getElementById("sideEffectEN");
+    form.addEventListener("submit", function (e) {
+      benefitMM.value = quill1.root.innerHTML;
+      benefitEN.value = quill2.root.innerHTML;
+      sideEffectMM.value = quill3.root.innerHTML;
+      sideEffectEN.value = quill4.root.innerHTML;
+    });
+  </script>
 </html>

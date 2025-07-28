@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Herbal Cure Admin</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link href="/stylesheets/quill.snow.css" rel="stylesheet" />
+    <script src="/javascripts/quill.js"></script>
   </head>
   <body>
     <div id="root">
@@ -43,100 +45,107 @@
             <div
               class="card shadow-md mx-auto rounded-lg max-w-5xl bg-base-300"
             >
-            <form action="/admin/hi/edit" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="id" value="<%= ingredient._id %>" />
-              <div class="grid grid-cols-1 lg:grid-cols-4 gap-3 p-3">
-                <fieldset class="fieldset">
-                  <legend class="fieldset-legend">Ingredient Name MM</legend>
-                  <input
-                    type="text"
-                    name="nameMM"
-                    class="input"
-                    value="<%= ingredient.nameMM %>"
-                    placeholder="Ingredient Name MM"
-                  />
-                </fieldset>
-                <fieldset class="fieldset">
-                  <legend class="fieldset-legend">Ingredient Name EN</legend>
-                  <input
-                    type="text"
-                    name="nameEN"
-                    class="input"
-                     value="<%= ingredient.nameEN %>"
-                    placeholder="Ingredient Name EN"
-                  />
-                </fieldset>
-                <fieldset class="fieldset">
-                  <legend class="fieldset-legend">Category</legend>
-                  <select class="select" name="category">
-                    <option value="Leafy Greens" <%= ingredient.category == "Leafy Greens"? "selected":""%>>Leafy Greens</option>
-                    <option value="Root Vegetables" <%= ingredient.category == "Root Vegetables"? "selected":"" %>>Root Vegetables</option>
-                    <option value="Cruciferous Vegetables" <%= ingredient.category == "Cruciferous Vegetables"? "selected":"" %>>Cruciferous Vegetables</option>
-                    <option value="Fruit Vegetables" <%= ingredient.category == "Fruit Vegetables"? "selected":"" %>>Fruit Vegetables</option>
-                    <option value="Stem Vegetables" <%= ingredient.category == "Stem Vegetables"? "selected":"" %>>Stem Vegetables</option>
-                    <option value="Bulb Vegetables" <%= ingredient.category == "Bulb Vegetables"? "selected":"" %>>Bulb Vegetables</option>
-                    <option value="Tuber Vegetables" <%= ingredient.category == "Tuber Vegetables"? "selected":"" %>>Tuber Vegetablea</option>
-                    <option value="Flower Vegetables" <%= ingredient.category == "Flower Vegetables"? "selected":"" %>>Flower Vegetablea</option>
-                  </select>
-                </fieldset>
-                <fieldset class="fieldset">
-                  <legend class="fieldset-legend">Image</legend>
-                  <input type="file" name="image" class="file-input" />
-                </fieldset>
-                <fieldset class="fieldset lg:col-span-2">
-                  <legend class="fieldset-legend">Benefit MM</legend>
-                  <textarea
-                    class="textarea h-24 w-full"
-                    name="benefitMM"
-                    placeholder="Benefit MM"
-                  ><%= ingredient.benefitMM %></textarea>
-                </fieldset>
-                <fieldset class="fieldset lg:col-span-2">
-                  <legend class="fieldset-legend">Benefit EN</legend>
-                  <textarea
-                    class="textarea h-24 w-full"
-                    name="benefitEN"
-                    placeholder="Benefit EN"
-                  ><%= ingredient.benefitEN %></textarea>
-                </fieldset>
-                <fieldset class="fieldset lg:col-span-2">
-                  <legend class="fieldset-legend">SideEffect MM</legend>
-                  <textarea
-                    class="textarea h-24 w-full"
-                    name="sideEffectMM"
-                    placeholder="SideEffect MM"
-                  ><%= ingredient.sideEffectMM %></textarea>
-                </fieldset>
-                <fieldset class="fieldset lg:col-span-2">
-                  <legend class="fieldset-legend">SideEffect EN</legend>
-                  <textarea
-                    class="textarea h-24 w-full"
-                    name="sideEffectEN"
-                    placeholder="SideEffect EN"
-                  ><%= ingredient.sideEffectEN %></textarea>
-                </fieldset>
-                <fieldset class="fieldset lg:col-span-2">
-                  <legend class="fieldset-legend">Description MM</legend>
-                  <textarea
-                    class="textarea h-24 w-full"
-                    name="descriptionMM"
-                    placeholder="Description MM"
-                  ><%= ingredient.descriptionMM %></textarea>
-                </fieldset>
-                <fieldset class="fieldset lg:col-span-2">
-                  <legend class="fieldset-legend">Description EN</legend>
-                  <textarea
-                    class="textarea h-24 w-full"
-                    name="descriptionEN"
-                    placeholder="Description EN"
-                  ><%= ingredient.descriptionEN %></textarea>
-                </fieldset>
-                <div class="flex flex-col col-span-full">
-                  <button type="submit" class="btn btn-primary">Edit</button>
+              <form
+                action="/admin/hi/edit"
+                method="post"
+                enctype="multipart/form-data"
+              >
+              <input type="hidden" name="id" value="<%= ingredient._id %>" />
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-3 p-3">
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Ingredient Name MM</legend>
+                    <input
+                      type="text"
+                      name="nameMM"
+                      class="input"
+                      value="<%= ingredient.nameMM %>"
+                      placeholder="Ingredient Name MM"
+                    />
+                  </fieldset>
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Ingredient Name EN</legend>
+                    <input
+                      type="text"
+                      name="nameEN"
+                      class="input"
+                      value="<%= ingredient.nameEN %>"
+                      placeholder="Ingredient Name EN"
+                    />
+                  </fieldset>
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Category</legend>
+                    <select class="select" name="category">
+                      <option value="Leafy Greens" <%= ingredient.category =="Leafy Greens"? "selected":"" %>>Leafy Greens</option>
+                      <option value="Root Vegetables" <%= ingredient.category =="Root Vegetables"? "selected":"" %>>Root Vegetables</option>
+                      <option value="Cruciferous Vegetables" <%= ingredient.category =="Cruciferous Vegetables"? "selected":"" %>>
+                        Cruciferous Vegetables
+                      </option>
+                      <option value="Fruit Vegetables" <%= ingredient.category =="Fruit Vegetables"? "selected":"" %>>Fruit Vegetables</option>
+                      <option value="Stem Vegetables" <%= ingredient.category =="Stem Vegetables"? "selected":"" %>>Stem Vegetables</option>
+                      <option value="Bulb Vegetables" <%= ingredient.category =="Bulb Vegetables"? "selected":"" %>>Bulb Vegetables</option>
+                      <option value="Tuber Vegetables" <%= ingredient.category =="Tuber Vegetables"? "selected":"" %>>Tuber Vegetables</option>
+                      <option value="Flower Vegetables" <%= ingredient.category =="Flower Vegetables"? "selected":"" %>>
+                        Flower Vegetables
+                      </option>
+                    </select>
+                  </fieldset>
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Image</legend>
+                    <input type="file" name="image" class="file-input" />
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Benefit MM</legend>
+                    <div id="benefitMMEditor" class="bg-base-100"></div>
+                    <input type="hidden" name="benefitMM" id="benefitMM" value="<%= ingredient.benefitMM %>" />
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Benefit EN</legend>
+                    <div id="benefitENEditor" class="bg-base-100"></div>
+                    <input type="hidden" name="benefitEN" id="benefitEN" value="<%= ingredient.benefitEN %>" />
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">SideEffect MM</legend>
+                    <div id="sideEffectMMEditor" class="bg-base-100"></div>
+                    <input
+                      type="hidden"
+                      name="sideEffectMM"
+                      id="sideEffectMM"
+                      value="<%= ingredient.sideEffectMM %>"
+                    />
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">SideEffect EN</legend>
+                    <div id="sideEffectENEditor" class="bg-base-100"></div>
+                    <input
+                      type="hidden"
+                      name="sideEffectEN"
+                      id="sideEffectEN"
+                      value="<%= ingredient.sideEffectEN %>"
+                    />
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Description MM</legend>
+                    <textarea
+                      class="textarea h-24 w-full"
+                      name="descriptionMM"
+                      placeholder="Description MM"
+                    ><%= ingredient.descriptionMM %></textarea>
+                  </fieldset>
+                  <fieldset class="fieldset lg:col-span-2">
+                    <legend class="fieldset-legend">Description EN</legend>
+                    <textarea
+                      class="textarea h-24 w-full"
+                      name="descriptionEN"
+                      placeholder="Description EN"
+                    ><%= ingredient.descriptionEN %></textarea>
+                  </fieldset>
+                  <div class="flex flex-col col-span-full">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                  </div>
                 </div>
-              </div>
               </form>
             </div>
+
             <div class="h-16"></div>
           </main>
         </div>
@@ -144,4 +153,36 @@
       </div>
     </div>
   </body>
+  <script src="/javascripts/jquery-3.7.1.min.js"></script>
+  <script>
+    const quill1 = new Quill("#benefitMMEditor", {
+      theme: "snow",
+    });
+    const quill2 = new Quill("#benefitENEditor", {
+      theme: "snow",
+    });
+    const quill3 = new Quill("#sideEffectMMEditor", {
+      theme: "snow",
+    });
+    const quill4 = new Quill("#sideEffectENEditor", {
+      theme: "snow",
+    });
+    const form = document.querySelector("form");
+    const benefitMM = document.getElementById("benefitMM");
+    const benefitEN = document.getElementById("benefitEN");
+    const sideEffectMM = document.getElementById("sideEffectMM");
+    const sideEffectEN = document.getElementById("sideEffectEN");
+    form.addEventListener("submit", function (e) {
+      benefitMM.value = quill1.root.innerHTML;
+      benefitEN.value = quill2.root.innerHTML;
+      sideEffectMM.value = quill3.root.innerHTML;
+      sideEffectEN.value = quill4.root.innerHTML;
+    });
+    $(function(){
+        quill1.root.innerHTML = $("#benefitMM").val();
+        quill2.root.innerHTML = $("#benefitEN").val();
+        quill3.root.innerHTML = $("#sideEffectMM").val();
+        quill4.root.innerHTML = $("#sideEffectEN").val();
+    })
+  </script>
 </html>
