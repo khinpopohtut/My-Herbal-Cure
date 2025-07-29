@@ -2561,6 +2561,9 @@
   .h-\[30vh\] {
     height: 30vh;
   }
+  .h-full {
+    height: 100%;
+  }
   .min-h-full {
     min-height: 100%;
   }
