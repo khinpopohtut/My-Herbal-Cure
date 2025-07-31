@@ -26,6 +26,11 @@ router.get("/hdl",async function (req, res, next) {
   res.render("hdl", {__: res.__,hurtList:hurtList,diseaseList:diseaseList});
 });
 
+router.get("/hdl/:id", async function (req, res){
+  const hd = await HurtAndDisease.findById(req.params.id).populate("relatedIngredients");
+  res.render("detailHdl", {__: res.__, hd: hd});
+});
+
 router.get("/dds", function (req, res, next) {
   res.render("dds", {__: res.__});
 });
