@@ -32,7 +32,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-mongoose.connect("mongodb://127.0.0.1/hcdb");
+// mongoose.connect("mongodb://127.0.0.1/hcdb");
+mongoose.connect("mongodb+srv://khin:khin2025@hcdb.vhfulhb.mongodb.net/?retryWrites=true&w=majority&appName=hcdb");
 const db = mongoose.connection;
 db.on("error", console.error.bind("mongodb connection error at hcdb"));
 
